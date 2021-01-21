@@ -31,7 +31,10 @@ public class Main {
         numbersArray.add(2, 11);
         print(numbersArray.toString());     // [1, 2, 11, 3, 4, 5, 6, 7]
 
-        print(numbersArray.size());         // 8
+        print(numbersArray.removeAt(2));    // 11
+        print(numbersArray.toString());     // [1, 2, 3, 4, 5, 6, 7]
+
+        print(numbersArray.size());         // 7
         
         print(numbersArray.isEmpty());      // false
 

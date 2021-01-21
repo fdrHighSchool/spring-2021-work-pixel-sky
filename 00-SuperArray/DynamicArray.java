@@ -4,7 +4,7 @@
 @SuppressWarnings("unchecked")
 public class DynamicArray<T> {
 
-    private T[] array;          // storing the values
+    private T[] array;          // storing the datas
     private int length = 0;     // the length that the user would see
     private int capacity;       // the actual capacity of the array
 
@@ -21,8 +21,8 @@ public class DynamicArray<T> {
 
     // grow the array by a certain size
     public void grow(int growSize) {
-        if (growSize < 1) throw new IllegalArgumentException(String.format("Illegal grow size: %d. Grow size must be bigger than 0", growSize));
-        this.capacity += growSize;  // increment the capacity
+        if (growSize < 1) throw new IllegalArgumentException(String.format("Illegal grow size: %d. Grow size must be bigger than 0.", growSize));
+        this.capacity += growSize;  // increase the capacity
         T[] newArray = (T[]) new Object[this.capacity];     // cast Object array to T array
         for (int i = 0; i < this.length; i++) newArray[i] = this.array[i];  // copying over all the data from the old array to the new one
         this.array = newArray;  // set the array to the new array
@@ -33,12 +33,7 @@ public class DynamicArray<T> {
         // if there are no room for the new data
         if (this.length + 1 > this.capacity) {
             if (this.capacity == 0) this.capacity = 1;  
-            else this.capacity *= 2;
-            
-            T[] newArray = (T[]) new Object[this.capacity];     // cast Object array to T array
-            
-            for (int i = 0; i < this.length; i++) newArray[i] = this.array[i];  // copying all the data from old array to the new one
-            this.array = newArray;  // set the array to the new array
+            grow(this.capacity);   
         }
         
         this.array[this.length++] = value;  // add the value to the end then increment length
@@ -48,20 +43,15 @@ public class DynamicArray<T> {
     public void add(int index, T value) {
         if (index < 0 || index > this.length - 1) throw new IndexOutOfBoundsException(String.format("Index %d out of bounds for length %d", index, this.length));
         
-        if (this.capacity == 0) this.capacity = 1;
-        else if (this.length + 1 > this.capacity) this.capacity *= 2;   // if there are no room for the new data, double the capacity
-        
-        T[] newArray = (T[]) new Object[this.capacity];     // cast Object array to T array
-
-        int i = 0;
-        // copying all the data but skip the index of the value to be added
-        while (i < this.length) {
-            // while i is less than the index
-            if (i < index) newArray[i] = this.array[i++];   // newArray at index i equal to index i++(current index) of the old array, then i++
-            else newArray[++i] = this.array[i - 1];         // newArray at index ++i(next index) equal to index i - 1(previous index or the index before ++i) of old array
+        // if there are no room for the new data
+        if (this.length + 1 > this.capacity) {
+            if (this.capacity == 0) this.capacity = 1;  
+            grow(this.capacity);   
         }
-        this.array = newArray;  // set the array to the new array
-        set(index, value);      // fill the skiped index
+        
+        for (int i = this.length - 1; i >= index; i--) this.array[i+1] = this.array[i];  // shift all data after index, one to the right
+
+        set(index, value);      // set the value at the index
         this.length++;          // increment the lenght
     }
 
@@ -78,19 +68,8 @@ public class DynamicArray<T> {
 
         // if not the last item
         if (!(index == this.length - 1)) {
-            T[] newArray = (T[]) new Object[capacity];
-            
-            int i = 0;
-            // copying all the data from old array to the new one, except the deleted one
-            while (i < this.length - 1) {
-                // while i is less than the index
-                if (i < index) newArray[i] = this.array[i++];   // newArray at index i equal to index i++(current index) of the old array, then i+1
-                else newArray[i] = this.array[++i];             // newArray at index i equal to index ++i(next index) of the old array 
-            }
-            
-            this.array = newArray;  // set the array to the new array
+            for (int i = index; i < this.length - 1; i++) this.array[i] = this.array[i+1];  // shift all data after index, one to the left
         }
-        
         this.length--;  // reduce the length
         return data;    // return the deleted data
     }
