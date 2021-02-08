@@ -112,10 +112,16 @@ public class DynamicArray<T> {
 
     // empty the array
     public void clear() {
-        for (int i = 0; i < this.length; i++) array[i] = null;
         this.length = 0;
     }
     
+    // convert dynamic array to normal array
+    public T[] toArray() {
+        T[] array = (T[]) new Object[this.length]; // new array
+        for (int i = 0; i < this.length; i++) array[i] = this.array[i]; // copying over all the datas
+        return array;
+    }
+
     @Override
     public String toString() {
         if (this.length == 0) return "[]";      // if array is empty, then return []
