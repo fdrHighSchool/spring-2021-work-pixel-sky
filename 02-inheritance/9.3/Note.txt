@@ -1,0 +1,5 @@
+- Method overriding occurs when a public method in a subclass has the same method signature as a public method in the superclass.
+- Any method that is called must be defined within its own class or its superclass.
+- A subclass is usually designed to have modified (overridden) or additional methods or instance variables.
+- A subclass will inherit all public methods from the superclass (for example all the set and get methods); these methods remain public in the subclass.
+- Overloading a method is when several methods have the same name but the parameter types, order, or number are different.
