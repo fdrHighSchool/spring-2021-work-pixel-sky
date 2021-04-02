@@ -1,0 +1,6 @@
+- Subclasses inherit all the private instance variables in a superclass that they extend, but they cannot directly access them since they are private.
+- Constructors are not inherited.
+- The superclass constructor can be called from the first line of a subclass constructor by using the keyword super and passing appropriate parameters to set the private instance variables of the superclass.
+- The actual parameters passed in the call to the superclass constructor provide values that the constructor can use to initialize the object’s instance variables.
+- When a subclass’s constructor does not explicitly call a superclass’s constructor using super, Java inserts a call to the superclass’s no-argument constructor.
+- Regardless of whether the superclass constructor is called implicitly or explicitly, the process of calling superclass constructors continues until the Object constructor is called. At this point, all of the constructors within the hierarchy execute beginning with the Object constructor.
