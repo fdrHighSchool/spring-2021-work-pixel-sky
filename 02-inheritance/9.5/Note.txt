@@ -1,0 +1,4 @@
+- An inheritance hierarchy of subclasses inheriting from superclasses can be formed with Object being the top of the hierarchy.
+- When a class S “is-a” class T, T is referred to as a superclass, and S is referred to as a subclass.
+- If S is a subclass of T, then a reference of type T can be used to refer to an object of type T or S. This is called polymorphism, defined more in the next lesson.
+- Declaring references of type T, when S is a subclass of T, is useful in the declaring formal method parameters of type T, arrays of type T[], and ArrayList<T> of type T so that all the subclasses of T can also be used with these.
