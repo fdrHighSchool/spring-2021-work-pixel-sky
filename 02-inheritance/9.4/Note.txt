@@ -1,0 +1,2 @@
+- The keyword super can be used to call a superclass’s constructors and methods.
+- The superclass method can be called in a subclass by using the keyword super with the method name and passing appropriate parameters.
