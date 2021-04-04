@@ -24,7 +24,7 @@ class StringFormatter {
         StringBuilder sb = new StringBuilder().append(wordList.get(0));
         for (int i = 1; i < wordList.size(); i++) {
             for (int c = leftoverSaces-- > 0 ? -1 : 0; c < basicGapWidth; c++)
-                sb.append("-");
+                sb.append(" ");
             sb.append(wordList.get(i));
         }
         return sb.toString();
