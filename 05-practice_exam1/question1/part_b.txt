@@ -1,0 +1,8 @@
+private String[] mixedWords(String[] words) {
+	String[] recombined = new String[words.length];
+	for (int i = 0; i < words.length; i += 2) {
+		recombined[i] = recombined(words[i], words[i+1]);
+		recombined[i+1] = recombined(words[i+1], words[i]);		
+	}
+	return recombined;
+}
