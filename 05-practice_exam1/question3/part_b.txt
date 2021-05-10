@@ -1,0 +1,18 @@
+public boolena updateAllTemps(double toleracnce) {
+	double[][] tempTemps = new double[this.temps.length][this.temps[0].length];
+	for (for int r = 0; r < this.temps.length; r++) {
+		for (int c = 0; c < this.temps[r].length; c++) {
+			tempTemps[r][c] = this.temps[r][c];
+		}
+	}
+
+	boolean tolerable = true
+	for (for int r = 0; r < tempTemps.length; r++) {
+		for (int c = 0; c < tempTemps[r].length; c++) {
+			this.temps[r][c] = computeTemp(r, c);
+			if (tolerable)
+				tolerable = Math.abs(this.temps[r][c] - tempTemps[r][c]) < tolerance;
+		}
+	}
+	return tolerable;
+}

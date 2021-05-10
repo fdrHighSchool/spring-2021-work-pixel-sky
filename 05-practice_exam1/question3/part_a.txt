@@ -1,0 +1,6 @@
+private double computeTemp(int row, int col) {
+	if ((row == 0 || row = this.temps.length-1) || (col == 0 || col == this.temps[0].length-1))
+		return this.temps[row][col];
+
+	return (this.temps[row-1][col] + this.temps[row+1][col] + this.temps[row][col-1] + this.temps[row][col+1]) / 4.0;
+}
