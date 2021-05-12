@@ -1,0 +1,8 @@
+public static double propLong(int n) {
+	int count = 0;
+	for (int i = 1; i <= n; i++) {
+		if (isLongSeq(i))
+			count++;
+	}
+	return (double) count / n;
+}
