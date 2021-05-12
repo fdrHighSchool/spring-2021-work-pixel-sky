@@ -1,0 +1,4 @@
+public void recordScores(int[] stuScores) {
+	for (int i : stuScores)
+		this.record(i);
+}

@@ -1,0 +1,16 @@
+public boolean record(int score) {
+	for (int i = 0; i < this.scoreList.size(); i++) {
+		if (this.scoreList.get(i).getScore() > score) {
+			if (this.scoreList.get(i-1).getScore() == score) {
+				info.increment();	
+				return false;		
+			}
+			else {
+				this.scoreList.add(i, new ScoreInfo(score));
+				return true;
+			}
+		}
+		
+	}
+	
+}
