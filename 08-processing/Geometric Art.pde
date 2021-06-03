@@ -10,9 +10,9 @@ function setup() {
 	background(0, 80, 107);
 	noFill();
 	
-	let centerX = windowWidth / 2;
-	let centerY = windowHeight / 3 * 2;
 	let radius = (windowHeight * 0.9) / 3;
+	let centerX = windowWidth / 2;
+	let centerY = (radius * 2) + (windowHeight * 0.1 / 2);
 	
 	triangle(centerX, centerY-(radius*2), centerX+(radius*SQRT3), centerY+radius, centerX-(radius*SQRT3), centerY+radius);
 	callStack.push(subDivide(centerX, centerY, radius));	
@@ -23,8 +23,8 @@ function subDivide(centerX, centerY, radius) {
 	let h_shift = h * SQRT3;
 	triangle(centerX-h_shift, centerY-h, centerX+h_shift, centerY-h, centerX, centerY+radius);
 	return [wrapper(centerX, centerY-radius, h), 
-					wrapper(centerX+h_shift, centerY+h, h), 
-					wrapper(centerX-h_shift, centerY+h, h)]
+			wrapper(centerX+h_shift, centerY+h, h), 
+			wrapper(centerX-h_shift, centerY+h, h)]
 }
 
 function wrapper(centerX, centerY, radius) {
